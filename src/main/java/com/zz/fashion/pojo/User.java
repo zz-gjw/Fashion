@@ -33,7 +33,7 @@ public class User {
         this.password = password == null ? null : password.trim();
     }
 
-    public Integer getFlog() {
+    public Integer getFlag() {
         return flag;
     }
 

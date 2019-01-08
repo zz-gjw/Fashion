@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zz.fashion.dao.GoodsDetailMapper">
+  <resultMap id="BaseResultMap" type="com.zz.fashion.pojo.GoodsDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="goods_id" jdbcType="INTEGER" property="goodsId" />
+    <result column="man_goods_style_id" jdbcType="INTEGER" property="manGoodsStyleId" />
+    <result column="woman_buwei" jdbcType="INTEGER" property="womanBuwei" />
+    <result column="woman_top_style" jdbcType="INTEGER" property="womanTopStyle" />
+    <result column="woman_down_style" jdbcType="INTEGER" property="womanDownStyle" />
+    <result column="goods_chuanda_style" jdbcType="INTEGER" property="goodsChuandaStyle" />
+    <result column="goods_size" jdbcType="INTEGER" property="goodsSize" />
+    <result column="goods_color" jdbcType="INTEGER" property="goodsColor" />
+    <result column="goods_dantao" jdbcType="INTEGER" property="goodsDantao" />
+    <result column="goods_num" jdbcType="INTEGER" property="goodsNum" />
+    <result column="flog" jdbcType="INTEGER" property="flog" />
+    <result column="baldric_style" jdbcType="INTEGER" property="baldricStyle" />
+    <result column="goods_changhe_id" jdbcType="INTEGER" property="goodsChangheId" />
+    <result column="goods_xiebao_style" jdbcType="INTEGER" property="goodsXiebaoStyle" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, goods_id, man_goods_style_id, woman_buwei, woman_top_style, woman_down_style, 
+    goods_chuanda_style, goods_size, goods_color, goods_dantao, goods_num, flog, baldric_style, 
+    goods_changhe_id, goods_xiebao_style
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_goods_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_goods_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zz.fashion.pojo.GoodsDetail">
+    insert into t_goods_detail (id, goods_id, man_goods_style_id, 
+      woman_buwei, woman_top_style, woman_down_style, 
+      goods_chuanda_style, goods_size, goods_color, 
+      goods_dantao, goods_num, flog, 
+      baldric_style, goods_changhe_id, goods_xiebao_style
+      )
+    values (#{id,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, #{manGoodsStyleId,jdbcType=INTEGER}, 
+      #{womanBuwei,jdbcType=INTEGER}, #{womanTopStyle,jdbcType=INTEGER}, #{womanDownStyle,jdbcType=INTEGER}, 
+      #{goodsChuandaStyle,jdbcType=INTEGER}, #{goodsSize,jdbcType=INTEGER}, #{goodsColor,jdbcType=INTEGER}, 
+      #{goodsDantao,jdbcType=INTEGER}, #{goodsNum,jdbcType=INTEGER}, #{flog,jdbcType=INTEGER}, 
+      #{baldricStyle,jdbcType=INTEGER}, #{goodsChangheId,jdbcType=INTEGER}, #{goodsXiebaoStyle,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zz.fashion.pojo.GoodsDetail">
+    insert into t_goods_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="goodsId != null">
+        goods_id,
+      </if>
+      <if test="manGoodsStyleId != null">
+        man_goods_style_id,
+      </if>
+      <if test="womanBuwei != null">
+        woman_buwei,
+      </if>
+      <if test="womanTopStyle != null">
+        woman_top_style,
+      </if>
+      <if test="womanDownStyle != null">
+        woman_down_style,
+      </if>
+      <if test="goodsChuandaStyle != null">
+        goods_chuanda_style,
+      </if>
+      <if test="goodsSize != null">
+        goods_size,
+      </if>
+      <if test="goodsColor != null">
+        goods_color,
+      </if>
+      <if test="goodsDantao != null">
+        goods_dantao,
+      </if>
+      <if test="goodsNum != null">
+        goods_num,
+      </if>
+      <if test="flog != null">
+        flog,
+      </if>
+      <if test="baldricStyle != null">
+        baldric_style,
+      </if>
+      <if test="goodsChangheId != null">
+        goods_changhe_id,
+      </if>
+      <if test="goodsXiebaoStyle != null">
+        goods_xiebao_style,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="goodsId != null">
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="manGoodsStyleId != null">
+        #{manGoodsStyleId,jdbcType=INTEGER},
+      </if>
+      <if test="womanBuwei != null">
+        #{womanBuwei,jdbcType=INTEGER},
+      </if>
+      <if test="womanTopStyle != null">
+        #{womanTopStyle,jdbcType=INTEGER},
+      </if>
+      <if test="womanDownStyle != null">
+        #{womanDownStyle,jdbcType=INTEGER},
+      </if>
+      <if test="goodsChuandaStyle != null">
+        #{goodsChuandaStyle,jdbcType=INTEGER},
+      </if>
+      <if test="goodsSize != null">
+        #{goodsSize,jdbcType=INTEGER},
+      </if>
+      <if test="goodsColor != null">
+        #{goodsColor,jdbcType=INTEGER},
+      </if>
+      <if test="goodsDantao != null">
+        #{goodsDantao,jdbcType=INTEGER},
+      </if>
+      <if test="goodsNum != null">
+        #{goodsNum,jdbcType=INTEGER},
+      </if>
+      <if test="flog != null">
+        #{flog,jdbcType=INTEGER},
+      </if>
+      <if test="baldricStyle != null">
+        #{baldricStyle,jdbcType=INTEGER},
+      </if>
+      <if test="goodsChangheId != null">
+        #{goodsChangheId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsXiebaoStyle != null">
+        #{goodsXiebaoStyle,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zz.fashion.pojo.GoodsDetail">
+    update t_goods_detail
+    <set>
+      <if test="goodsId != null">
+        goods_id = #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="manGoodsStyleId != null">
+        man_goods_style_id = #{manGoodsStyleId,jdbcType=INTEGER},
+      </if>
+      <if test="womanBuwei != null">
+        woman_buwei = #{womanBuwei,jdbcType=INTEGER},
+      </if>
+      <if test="womanTopStyle != null">
+        woman_top_style = #{womanTopStyle,jdbcType=INTEGER},
+      </if>
+      <if test="womanDownStyle != null">
+        woman_down_style = #{womanDownStyle,jdbcType=INTEGER},
+      </if>
+      <if test="goodsChuandaStyle != null">
+        goods_chuanda_style = #{goodsChuandaStyle,jdbcType=INTEGER},
+      </if>
+      <if test="goodsSize != null">
+        goods_size = #{goodsSize,jdbcType=INTEGER},
+      </if>
+      <if test="goodsColor != null">
+        goods_color = #{goodsColor,jdbcType=INTEGER},
+      </if>
+      <if test="goodsDantao != null">
+        goods_dantao = #{goodsDantao,jdbcType=INTEGER},
+      </if>
+      <if test="goodsNum != null">
+        goods_num = #{goodsNum,jdbcType=INTEGER},
+      </if>
+      <if test="flog != null">
+        flog = #{flog,jdbcType=INTEGER},
+      </if>
+      <if test="baldricStyle != null">
+        baldric_style = #{baldricStyle,jdbcType=INTEGER},
+      </if>
+      <if test="goodsChangheId != null">
+        goods_changhe_id = #{goodsChangheId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsXiebaoStyle != null">
+        goods_xiebao_style = #{goodsXiebaoStyle,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zz.fashion.pojo.GoodsDetail">
+    update t_goods_detail
+    set goods_id = #{goodsId,jdbcType=INTEGER},
+      man_goods_style_id = #{manGoodsStyleId,jdbcType=INTEGER},
+      woman_buwei = #{womanBuwei,jdbcType=INTEGER},
+      woman_top_style = #{womanTopStyle,jdbcType=INTEGER},
+      woman_down_style = #{womanDownStyle,jdbcType=INTEGER},
+      goods_chuanda_style = #{goodsChuandaStyle,jdbcType=INTEGER},
+      goods_size = #{goodsSize,jdbcType=INTEGER},
+      goods_color = #{goodsColor,jdbcType=INTEGER},
+      goods_dantao = #{goodsDantao,jdbcType=INTEGER},
+      goods_num = #{goodsNum,jdbcType=INTEGER},
+      flog = #{flog,jdbcType=INTEGER},
+      baldric_style = #{baldricStyle,jdbcType=INTEGER},
+      goods_changhe_id = #{goodsChangheId,jdbcType=INTEGER},
+      goods_xiebao_style = #{goodsXiebaoStyle,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

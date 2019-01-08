@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zz.fashion.dao.ManGoodsStyleMapper">
+  <resultMap id="BaseResultMap" type="com.zz.fashion.pojo.ManGoodsStyle">
+    <id column="man_style_id" jdbcType="INTEGER" property="manStyleId" />
+    <result column="man_style_name" jdbcType="VARCHAR" property="manStyleName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    man_style_id, man_style_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from man_goods_style
+    where man_style_id = #{manStyleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from man_goods_style
+    where man_style_id = #{manStyleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zz.fashion.pojo.ManGoodsStyle">
+    insert into man_goods_style (man_style_id, man_style_name)
+    values (#{manStyleId,jdbcType=INTEGER}, #{manStyleName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zz.fashion.pojo.ManGoodsStyle">
+    insert into man_goods_style
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="manStyleId != null">
+        man_style_id,
+      </if>
+      <if test="manStyleName != null">
+        man_style_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="manStyleId != null">
+        #{manStyleId,jdbcType=INTEGER},
+      </if>
+      <if test="manStyleName != null">
+        #{manStyleName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zz.fashion.pojo.ManGoodsStyle">
+    update man_goods_style
+    <set>
+      <if test="manStyleName != null">
+        man_style_name = #{manStyleName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where man_style_id = #{manStyleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zz.fashion.pojo.ManGoodsStyle">
+    update man_goods_style
+    set man_style_name = #{manStyleName,jdbcType=VARCHAR}
+    where man_style_id = #{manStyleId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zz.fashion.dao.SizeMapper">
+  <resultMap id="BaseResultMap" type="com.zz.fashion.pojo.Size">
+    <id column="size_id" jdbcType="INTEGER" property="sizeId" />
+    <result column="size_name" jdbcType="VARCHAR" property="sizeName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    size_id, size_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_size
+    where size_id = #{sizeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_size
+    where size_id = #{sizeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zz.fashion.pojo.Size">
+    insert into t_size (size_id, size_name)
+    values (#{sizeId,jdbcType=INTEGER}, #{sizeName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zz.fashion.pojo.Size">
+    insert into t_size
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sizeId != null">
+        size_id,
+      </if>
+      <if test="sizeName != null">
+        size_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sizeId != null">
+        #{sizeId,jdbcType=INTEGER},
+      </if>
+      <if test="sizeName != null">
+        #{sizeName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zz.fashion.pojo.Size">
+    update t_size
+    <set>
+      <if test="sizeName != null">
+        size_name = #{sizeName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where size_id = #{sizeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zz.fashion.pojo.Size">
+    update t_size
+    set size_name = #{sizeName,jdbcType=VARCHAR}
+    where size_id = #{sizeId,jdbcType=INTEGER}
+  </update>
+</mapper>

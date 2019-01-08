@@ -24,7 +24,7 @@ public class UserController {
      * @param password
      * @return
      */
-    @ApiOperation(notes = "name/email/phone中的一个键和值和密码键值对",tags = "登录",value = "用户登录接口")
+    @ApiOperation(notes = "name/email/phone(全是电话号码登录)中的一个键和值和密码键值对",tags = "登录",value = "用户登录接口")
     @PostMapping("login.do")
     public ResultVo login(@ApiParam(value = "name/email/phone中的一个")String phone, String password){
         return userService.findUserByName(phone,password);

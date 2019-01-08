@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zz.fashion.dao.BaldricStyleMapper">
+  <resultMap id="BaseResultMap" type="com.zz.fashion.pojo.BaldricStyle">
+    <id column="baldric_style_id" jdbcType="INTEGER" property="baldricStyleId" />
+    <result column="baldric_style_name" jdbcType="VARCHAR" property="baldricStyleName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    baldric_style_id, baldric_style_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_baldric_style
+    where baldric_style_id = #{baldricStyleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_baldric_style
+    where baldric_style_id = #{baldricStyleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zz.fashion.pojo.BaldricStyle">
+    insert into t_baldric_style (baldric_style_id, baldric_style_name)
+    values (#{baldricStyleId,jdbcType=INTEGER}, #{baldricStyleName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zz.fashion.pojo.BaldricStyle">
+    insert into t_baldric_style
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="baldricStyleId != null">
+        baldric_style_id,
+      </if>
+      <if test="baldricStyleName != null">
+        baldric_style_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="baldricStyleId != null">
+        #{baldricStyleId,jdbcType=INTEGER},
+      </if>
+      <if test="baldricStyleName != null">
+        #{baldricStyleName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zz.fashion.pojo.BaldricStyle">
+    update t_baldric_style
+    <set>
+      <if test="baldricStyleName != null">
+        baldric_style_name = #{baldricStyleName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where baldric_style_id = #{baldricStyleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zz.fashion.pojo.BaldricStyle">
+    update t_baldric_style
+    set baldric_style_name = #{baldricStyleName,jdbcType=VARCHAR}
+    where baldric_style_id = #{baldricStyleId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zz.fashion.dao.WearStyleMapper">
+  <resultMap id="BaseResultMap" type="com.zz.fashion.pojo.WearStyle">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="wearStyleName" jdbcType="VARCHAR" property="wearstylename" />
+    <result column="focusNum" jdbcType="INTEGER" property="focusnum" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+    <result column="wearStyleStyle" jdbcType="CHAR" property="wearstylestyle" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, wearStyleName, focusNum, flag, wearStyleStyle
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_wearstyle
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_wearstyle
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zz.fashion.pojo.WearStyle">
+    insert into t_wearstyle (id, wearStyleName, focusNum, 
+      flag, wearStyleStyle)
+    values (#{id,jdbcType=INTEGER}, #{wearstylename,jdbcType=VARCHAR}, #{focusnum,jdbcType=INTEGER}, 
+      #{flag,jdbcType=INTEGER}, #{wearstylestyle,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zz.fashion.pojo.WearStyle">
+    insert into t_wearstyle
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="wearstylename != null">
+        wearStyleName,
+      </if>
+      <if test="focusnum != null">
+        focusNum,
+      </if>
+      <if test="flag != null">
+        flag,
+      </if>
+      <if test="wearstylestyle != null">
+        wearStyleStyle,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="wearstylename != null">
+        #{wearstylename,jdbcType=VARCHAR},
+      </if>
+      <if test="focusnum != null">
+        #{focusnum,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="wearstylestyle != null">
+        #{wearstylestyle,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zz.fashion.pojo.WearStyle">
+    update t_wearstyle
+    <set>
+      <if test="wearstylename != null">
+        wearStyleName = #{wearstylename,jdbcType=VARCHAR},
+      </if>
+      <if test="focusnum != null">
+        focusNum = #{focusnum,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="wearstylestyle != null">
+        wearStyleStyle = #{wearstylestyle,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zz.fashion.pojo.WearStyle">
+    update t_wearstyle
+    set wearStyleName = #{wearstylename,jdbcType=VARCHAR},
+      focusNum = #{focusnum,jdbcType=INTEGER},
+      flag = #{flag,jdbcType=INTEGER},
+      wearStyleStyle = #{wearstylestyle,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zz.fashion.dao.GoodsMapper">
+  <resultMap id="BaseResultMap" type="com.zz.fashion.pojo.Goods">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="goods_style_id" jdbcType="INTEGER" property="goodsStyleId" />
+    <result column="goods_sales" jdbcType="INTEGER" property="goodsSales" />
+    <result column="love_num" jdbcType="INTEGER" property="loveNum" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+    <result column="goods_price" jdbcType="DOUBLE" property="goodsPrice" />
+    <result column="goods_pic_url" jdbcType="VARCHAR" property="goodsPicUrl" />
+    <result column="goods_shop_id" jdbcType="INTEGER" property="goodsShopId" />
+    <result column="goods_create_date" jdbcType="DATE" property="goodsCreateDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, goods_name, goods_style_id, goods_sales, love_num, flag, goods_price, goods_pic_url, 
+    goods_shop_id, goods_create_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_goods
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_goods
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zz.fashion.pojo.Goods">
+    insert into t_goods (id, goods_name, goods_style_id, 
+      goods_sales, love_num, flag, 
+      goods_price, goods_pic_url, goods_shop_id, 
+      goods_create_date)
+    values (#{id,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsStyleId,jdbcType=INTEGER}, 
+      #{goodsSales,jdbcType=INTEGER}, #{loveNum,jdbcType=INTEGER}, #{flag,jdbcType=INTEGER}, 
+      #{goodsPrice,jdbcType=DOUBLE}, #{goodsPicUrl,jdbcType=VARCHAR}, #{goodsShopId,jdbcType=INTEGER}, 
+      #{goodsCreateDate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zz.fashion.pojo.Goods">
+    insert into t_goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="goodsName != null">
+        goods_name,
+      </if>
+      <if test="goodsStyleId != null">
+        goods_style_id,
+      </if>
+      <if test="goodsSales != null">
+        goods_sales,
+      </if>
+      <if test="loveNum != null">
+        love_num,
+      </if>
+      <if test="flag != null">
+        flag,
+      </if>
+      <if test="goodsPrice != null">
+        goods_price,
+      </if>
+      <if test="goodsPicUrl != null">
+        goods_pic_url,
+      </if>
+      <if test="goodsShopId != null">
+        goods_shop_id,
+      </if>
+      <if test="goodsCreateDate != null">
+        goods_create_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="goodsName != null">
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsStyleId != null">
+        #{goodsStyleId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsSales != null">
+        #{goodsSales,jdbcType=INTEGER},
+      </if>
+      <if test="loveNum != null">
+        #{loveNum,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="goodsPrice != null">
+        #{goodsPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="goodsPicUrl != null">
+        #{goodsPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsShopId != null">
+        #{goodsShopId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsCreateDate != null">
+        #{goodsCreateDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zz.fashion.pojo.Goods">
+    update t_goods
+    <set>
+      <if test="goodsName != null">
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsStyleId != null">
+        goods_style_id = #{goodsStyleId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsSales != null">
+        goods_sales = #{goodsSales,jdbcType=INTEGER},
+      </if>
+      <if test="loveNum != null">
+        love_num = #{loveNum,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="goodsPrice != null">
+        goods_price = #{goodsPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="goodsPicUrl != null">
+        goods_pic_url = #{goodsPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsShopId != null">
+        goods_shop_id = #{goodsShopId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsCreateDate != null">
+        goods_create_date = #{goodsCreateDate,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zz.fashion.pojo.Goods">
+    update t_goods
+    set goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_style_id = #{goodsStyleId,jdbcType=INTEGER},
+      goods_sales = #{goodsSales,jdbcType=INTEGER},
+      love_num = #{loveNum,jdbcType=INTEGER},
+      flag = #{flag,jdbcType=INTEGER},
+      goods_price = #{goodsPrice,jdbcType=DOUBLE},
+      goods_pic_url = #{goodsPicUrl,jdbcType=VARCHAR},
+      goods_shop_id = #{goodsShopId,jdbcType=INTEGER},
+      goods_create_date = #{goodsCreateDate,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

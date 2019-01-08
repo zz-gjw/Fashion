@@ -7,7 +7,7 @@ public class User {
 
     private String password;
 
-    private Integer flog;
+    private Integer flag;
 
     public Integer getId() {
         return id;
@@ -33,11 +33,11 @@ public class User {
         this.password = password == null ? null : password.trim();
     }
 
-    public Integer getFlog() {
-        return flog;
+    public Integer getFlag() {
+        return flag;
     }
 
-    public void setFlog(Integer flog) {
-        this.flog = flog;
+    public void setFlog(Integer flag) {
+        this.flag = flag;
     }
 }

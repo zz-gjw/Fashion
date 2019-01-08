@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zz.fashion.dao.XieBaoStyleMapper">
+  <resultMap id="BaseResultMap" type="com.zz.fashion.pojo.XieBaoStyle">
+    <id column="xiebao_style_id" jdbcType="INTEGER" property="xiebaoStyleId" />
+    <result column="xiebao_style_name" jdbcType="VARCHAR" property="xiebaoStyleName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    xiebao_style_id, xiebao_style_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_xiebao_style
+    where xiebao_style_id = #{xiebaoStyleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_xiebao_style
+    where xiebao_style_id = #{xiebaoStyleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zz.fashion.pojo.XieBaoStyle">
+    insert into t_xiebao_style (xiebao_style_id, xiebao_style_name)
+    values (#{xiebaoStyleId,jdbcType=INTEGER}, #{xiebaoStyleName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zz.fashion.pojo.XieBaoStyle">
+    insert into t_xiebao_style
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="xiebaoStyleId != null">
+        xiebao_style_id,
+      </if>
+      <if test="xiebaoStyleName != null">
+        xiebao_style_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="xiebaoStyleId != null">
+        #{xiebaoStyleId,jdbcType=INTEGER},
+      </if>
+      <if test="xiebaoStyleName != null">
+        #{xiebaoStyleName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zz.fashion.pojo.XieBaoStyle">
+    update t_xiebao_style
+    <set>
+      <if test="xiebaoStyleName != null">
+        xiebao_style_name = #{xiebaoStyleName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where xiebao_style_id = #{xiebaoStyleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zz.fashion.pojo.XieBaoStyle">
+    update t_xiebao_style
+    set xiebao_style_name = #{xiebaoStyleName,jdbcType=VARCHAR}
+    where xiebao_style_id = #{xiebaoStyleId,jdbcType=INTEGER}
+  </update>
+</mapper>

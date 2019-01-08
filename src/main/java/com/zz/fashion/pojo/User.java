@@ -37,7 +37,7 @@ public class User {
         return flag;
     }
 
-    public void setFlog(Integer flag) {
+    public void setFlag(Integer flag) {
         this.flag = flag;
     }
 }

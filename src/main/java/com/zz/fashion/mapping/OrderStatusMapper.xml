@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zz.fashion.dao.OrderStatusMapper">
+  <resultMap id="BaseResultMap" type="com.zz.fashion.pojo.OrderStatus">
+    <id column="order_status_id" jdbcType="INTEGER" property="orderStatusId" />
+    <result column="order_status_name" jdbcType="VARCHAR" property="orderStatusName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    order_status_id, order_status_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_order_status
+    where order_status_id = #{orderStatusId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_order_status
+    where order_status_id = #{orderStatusId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zz.fashion.pojo.OrderStatus">
+    insert into t_order_status (order_status_id, order_status_name)
+    values (#{orderStatusId,jdbcType=INTEGER}, #{orderStatusName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zz.fashion.pojo.OrderStatus">
+    insert into t_order_status
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderStatusId != null">
+        order_status_id,
+      </if>
+      <if test="orderStatusName != null">
+        order_status_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderStatusId != null">
+        #{orderStatusId,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatusName != null">
+        #{orderStatusName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zz.fashion.pojo.OrderStatus">
+    update t_order_status
+    <set>
+      <if test="orderStatusName != null">
+        order_status_name = #{orderStatusName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where order_status_id = #{orderStatusId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zz.fashion.pojo.OrderStatus">
+    update t_order_status
+    set order_status_name = #{orderStatusName,jdbcType=VARCHAR}
+    where order_status_id = #{orderStatusId,jdbcType=INTEGER}
+  </update>
+</mapper>

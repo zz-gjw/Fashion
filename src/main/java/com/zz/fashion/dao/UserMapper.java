@@ -17,4 +17,7 @@ public interface UserMapper {
     
     //根据用户名查user
     User selectByName(String username);
+
+    //注册
+    int insertUser(User user);
 }

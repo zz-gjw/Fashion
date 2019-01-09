@@ -83,5 +83,10 @@
   <select id="selectByName"  parameterType="string" resultMap="BaseResultMap">
     select * from t_user where phone= #{username} and flag=1
   </select>
+
+  <insert id="insertUser" parameterType="com.zz.fashion.pojo.User">
+    insert into t_user (phone, password)
+    values (#{phone,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})
+  </insert>
   
 </mapper>

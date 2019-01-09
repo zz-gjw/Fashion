@@ -14,6 +14,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
+    //登录
     @Override
     public ResultVo findUserByName(String phone, String password) {
         User user = userMapper.selectByName(phone);
@@ -21,6 +22,26 @@ public class UserServiceImpl implements UserService {
             if (user.getPassword().equals(password)){
                 return ResultVo.setOK(user);
             }
+        }
+        return ResultVo.setERROR();
+    }
+
+    //注册
+    @Override
+    public ResultVo addUser(User user) {
+        int a = userMapper.insertUser(user);
+        if(a == 0){
+            return ResultVo.setOK(user);
+        }
+        return ResultVo.setERROR();
+    }
+
+    //判断该手机号是否注册过用户
+    @Override
+    public ResultVo IsUser(String phone) {
+        User user = userMapper.selectByName(phone);
+        if (user != null){
+            return ResultVo.setOK(user);
         }
         return ResultVo.setERROR();
     }

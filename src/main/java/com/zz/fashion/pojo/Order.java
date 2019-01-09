@@ -1,5 +1,7 @@
 package com.zz.fashion.pojo;
 
+import java.util.List;
+
 public class Order {
     private Integer orderId;
 
@@ -12,6 +14,48 @@ public class Order {
     private String orderLiuyan;
 
     private Integer flag;
+
+    private User user;
+
+    private List<OrderDetail> orderDetailList;
+
+    private OrderStatus orderstatus;
+
+    private PeiSongStatus peiSongStatus;
+
+    public OrderStatus getOrderstatus() {
+        return orderstatus;
+    }
+
+    public void setOrderstatus(OrderStatus orderstatus) {
+        this.orderstatus = orderstatus;
+    }
+
+    public PeiSongStatus getPeiSongStatus() {
+        return peiSongStatus;
+    }
+
+    public void setPeiSongStatus(PeiSongStatus peiSongStatus) {
+        this.peiSongStatus = peiSongStatus;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+
+
+    public List<OrderDetail> getOrderDetailList() {
+        return orderDetailList;
+    }
+
+    public void setOrderDetailList(List<OrderDetail> orderDetailList) {
+        this.orderDetailList = orderDetailList;
+    }
 
     public Integer getOrderId() {
         return orderId;

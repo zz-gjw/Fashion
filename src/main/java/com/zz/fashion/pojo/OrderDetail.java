@@ -9,6 +9,16 @@ public class OrderDetail {
 
     private Integer goodsNum;
 
+    private Goods goods;
+
+    public Goods getGoods() {
+        return goods;
+    }
+
+    public void setGoods(Goods goods) {
+        this.goods = goods;
+    }
+
     public Integer getOrderDetailId() {
         return orderDetailId;
     }

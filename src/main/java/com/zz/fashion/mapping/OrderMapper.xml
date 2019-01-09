@@ -9,9 +9,62 @@
     <result column="order_liuyan" jdbcType="VARCHAR" property="orderLiuyan" />
     <result column="flag" jdbcType="INTEGER" property="flag" />
   </resultMap>
+
+  <resultMap id="BaseResultMap1" type="com.zz.fashion.pojo.Order">
+    <id column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="order_status" jdbcType="INTEGER" property="orderStatus" />
+    <result column="order_peisong_style_id" jdbcType="INTEGER" property="orderPeisongStyleId" />
+    <result column="order_liuyan" jdbcType="VARCHAR" property="orderLiuyan" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+    <association property="user"
+                resultMap="com.zz.fashion.dao.UserMapper.BaseResultMap"
+    ></association>
+    <association property="peiSongStatus"
+                resultMap="com.zz.fashion.dao.PeiSongStatusMapper.BaseResultMap"
+    ></association>
+    <association property="orderstatus"
+                resultMap="com.zz.fashion.dao.OrderStatusMapper.BaseResultMap"
+    ></association>
+    <collection property="orderDetailList"
+                resultMap="com.zz.fashion.dao.OrderDetailMapper.BaseResultMap"
+    ></collection>
+  </resultMap>
+
   <sql id="Base_Column_List">
     order_id, user_id, order_status, order_peisong_style_id, order_liuyan, flag
   </sql>
+
+  <select id="selectOrder" parameterType="com.zz.fashion.pojo.Order" resultMap="BaseResultMap1">
+    SELECT * FROM t_order o
+    INNER JOIN t_order_status os
+    ON o.order_status=os.order_status_id
+    INNER JOIN t_user u
+    ON u.id=o.user_id
+    INNER JOIN t_peisong p
+    ON p.peisong_id=o.order_peisong_style_id
+    INNER JOIN t_order_detail od
+    ON od.d_order_id=o.order_id
+    INNER JOIN t_goods g
+    ON g.id=od.o_goods_id
+    <where>
+      <if test="userId != null">
+      and o.user_id = #{userId,jdbcType=INTEGER}
+    </if>
+      <if test="orderStatus != null">
+       and o.order_status = #{orderStatus,jdbcType=INTEGER}
+      </if>
+      <if test="orderPeisongStyleId != null">
+       and o.order_peisong_style_id = #{orderPeisongStyleId,jdbcType=INTEGER}
+      </if>
+      <if test="orderLiuyan != null">
+       and o.order_liuyan = #{orderLiuyan,jdbcType=VARCHAR}
+      </if>
+      and o.flag=1
+    </where>
+  </select>
+
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -30,7 +83,7 @@
       #{orderPeisongStyleId,jdbcType=INTEGER}, #{orderLiuyan,jdbcType=VARCHAR}, #{flag,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.zz.fashion.pojo.Order">
+  <insert id="insertSelective" parameterType="com.zz.fashion.pojo.Order"  useGeneratedKeys="true" keyProperty="orderId">
     insert into t_order
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="orderId != null">

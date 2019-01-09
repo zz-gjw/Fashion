@@ -14,4 +14,7 @@ public interface UserService {
     //判断该手机号是否注册过用户
     ResultVo IsUser(String phone);
 
+    //修改密码
+    ResultVo updatePassword(User user);
+
 }

@@ -45,4 +45,11 @@ public class UserController {
     public ResultVo IsUser(String phone){
         return userService.IsUser(phone);
     }
+
+    //修改密码
+    @ApiOperation(notes = "输入手机号,修改该用户的密码",tags = "修改密码",value = "用户修改密码接口")
+    @PostMapping("updatePassword.do")
+    public ResultVo updatePassword(User user){
+        return userService.updatePassword(user);
+    }
 }

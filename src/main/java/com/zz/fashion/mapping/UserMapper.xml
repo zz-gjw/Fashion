@@ -88,5 +88,11 @@
     insert into t_user (phone, password)
     values (#{phone,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})
   </insert>
+
+  <update id="updateByName" parameterType="com.zz.fashion.pojo.User">
+    update t_user
+    set password = #{password}
+    where phone = #{phone} and flag=1
+  </update>
   
 </mapper>

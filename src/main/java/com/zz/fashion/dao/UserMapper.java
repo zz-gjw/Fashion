@@ -20,4 +20,7 @@ public interface UserMapper {
 
     //注册
     int insertUser(User user);
+
+    //修改密码
+    int updateByName(User user);
 }

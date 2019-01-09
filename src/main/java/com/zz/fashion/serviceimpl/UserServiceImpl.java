@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResultVo addUser(User user) {
         int a = userMapper.insertUser(user);
-        if(a == 0){
+        if(a > 0){
             return ResultVo.setOK(user);
         }
         return ResultVo.setERROR();
@@ -41,6 +41,16 @@ public class UserServiceImpl implements UserService {
     public ResultVo IsUser(String phone) {
         User user = userMapper.selectByName(phone);
         if (user != null){
+            return ResultVo.setOK(user);
+        }
+        return ResultVo.setERROR();
+    }
+
+    //修改密码
+    @Override
+    public ResultVo updatePassword(User user) {
+        int a = userMapper.updateByName(user);
+        if (a > 0){
             return ResultVo.setOK(user);
         }
         return ResultVo.setERROR();

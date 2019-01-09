@@ -5,11 +5,13 @@ public class Order {
 
     private Integer userId;
 
-    private Integer goodsId;
-
-    private Integer goodsNum;
-
     private Integer orderStatus;
+
+    private Integer orderPeisongStyleId;
+
+    private String orderLiuyan;
+
+    private Integer flag;
 
     public Integer getOrderId() {
         return orderId;
@@ -27,27 +29,35 @@ public class Order {
         this.userId = userId;
     }
 
-    public Integer getGoodsId() {
-        return goodsId;
-    }
-
-    public void setGoodsId(Integer goodsId) {
-        this.goodsId = goodsId;
-    }
-
-    public Integer getGoodsNum() {
-        return goodsNum;
-    }
-
-    public void setGoodsNum(Integer goodsNum) {
-        this.goodsNum = goodsNum;
-    }
-
     public Integer getOrderStatus() {
         return orderStatus;
     }
 
     public void setOrderStatus(Integer orderStatus) {
         this.orderStatus = orderStatus;
+    }
+
+    public Integer getOrderPeisongStyleId() {
+        return orderPeisongStyleId;
+    }
+
+    public void setOrderPeisongStyleId(Integer orderPeisongStyleId) {
+        this.orderPeisongStyleId = orderPeisongStyleId;
+    }
+
+    public String getOrderLiuyan() {
+        return orderLiuyan;
+    }
+
+    public void setOrderLiuyan(String orderLiuyan) {
+        this.orderLiuyan = orderLiuyan == null ? null : orderLiuyan.trim();
+    }
+
+    public Integer getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Integer flag) {
+        this.flag = flag;
     }
 }

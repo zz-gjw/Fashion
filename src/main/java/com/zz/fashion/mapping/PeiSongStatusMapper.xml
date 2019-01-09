@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zz.fashion.dao.PeiSongStatusMapper">
+  <resultMap id="BaseResultMap" type="com.zz.fashion.pojo.PeiSongStatus">
+    <id column="peisong_id" jdbcType="INTEGER" property="peisongId" />
+    <result column="peisong_name" jdbcType="VARCHAR" property="peisongName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    peisong_id, peisong_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_peisong
+    where peisong_id = #{peisongId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_peisong
+    where peisong_id = #{peisongId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zz.fashion.pojo.PeiSongStatus">
+    insert into t_peisong (peisong_id, peisong_name)
+    values (#{peisongId,jdbcType=INTEGER}, #{peisongName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zz.fashion.pojo.PeiSongStatus">
+    insert into t_peisong
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="peisongId != null">
+        peisong_id,
+      </if>
+      <if test="peisongName != null">
+        peisong_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="peisongId != null">
+        #{peisongId,jdbcType=INTEGER},
+      </if>
+      <if test="peisongName != null">
+        #{peisongName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zz.fashion.pojo.PeiSongStatus">
+    update t_peisong
+    <set>
+      <if test="peisongName != null">
+        peisong_name = #{peisongName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where peisong_id = #{peisongId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zz.fashion.pojo.PeiSongStatus">
+    update t_peisong
+    set peisong_name = #{peisongName,jdbcType=VARCHAR}
+    where peisong_id = #{peisongId,jdbcType=INTEGER}
+  </update>
+</mapper>

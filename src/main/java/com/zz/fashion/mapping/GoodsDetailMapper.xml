@@ -13,14 +13,14 @@
     <result column="goods_color" jdbcType="INTEGER" property="goodsColor" />
     <result column="goods_dantao" jdbcType="INTEGER" property="goodsDantao" />
     <result column="goods_num" jdbcType="INTEGER" property="goodsNum" />
-    <result column="flog" jdbcType="INTEGER" property="flog" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
     <result column="baldric_style" jdbcType="INTEGER" property="baldricStyle" />
     <result column="goods_changhe_id" jdbcType="INTEGER" property="goodsChangheId" />
     <result column="goods_xiebao_style" jdbcType="INTEGER" property="goodsXiebaoStyle" />
   </resultMap>
   <sql id="Base_Column_List">
     id, goods_id, man_goods_style_id, woman_buwei, woman_top_style, woman_down_style, 
-    goods_chuanda_style, goods_size, goods_color, goods_dantao, goods_num, flog, baldric_style, 
+    goods_chuanda_style, goods_size, goods_color, goods_dantao, goods_num, flag, baldric_style, 
     goods_changhe_id, goods_xiebao_style
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -37,13 +37,13 @@
     insert into t_goods_detail (id, goods_id, man_goods_style_id, 
       woman_buwei, woman_top_style, woman_down_style, 
       goods_chuanda_style, goods_size, goods_color, 
-      goods_dantao, goods_num, flog, 
+      goods_dantao, goods_num, flag, 
       baldric_style, goods_changhe_id, goods_xiebao_style
       )
     values (#{id,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, #{manGoodsStyleId,jdbcType=INTEGER}, 
       #{womanBuwei,jdbcType=INTEGER}, #{womanTopStyle,jdbcType=INTEGER}, #{womanDownStyle,jdbcType=INTEGER}, 
       #{goodsChuandaStyle,jdbcType=INTEGER}, #{goodsSize,jdbcType=INTEGER}, #{goodsColor,jdbcType=INTEGER}, 
-      #{goodsDantao,jdbcType=INTEGER}, #{goodsNum,jdbcType=INTEGER}, #{flog,jdbcType=INTEGER}, 
+      #{goodsDantao,jdbcType=INTEGER}, #{goodsNum,jdbcType=INTEGER}, #{flag,jdbcType=INTEGER}, 
       #{baldricStyle,jdbcType=INTEGER}, #{goodsChangheId,jdbcType=INTEGER}, #{goodsXiebaoStyle,jdbcType=INTEGER}
       )
   </insert>
@@ -83,8 +83,8 @@
       <if test="goodsNum != null">
         goods_num,
       </if>
-      <if test="flog != null">
-        flog,
+      <if test="flag != null">
+        flag,
       </if>
       <if test="baldricStyle != null">
         baldric_style,
@@ -130,8 +130,8 @@
       <if test="goodsNum != null">
         #{goodsNum,jdbcType=INTEGER},
       </if>
-      <if test="flog != null">
-        #{flog,jdbcType=INTEGER},
+      <if test="flag != null">
+        #{flag,jdbcType=INTEGER},
       </if>
       <if test="baldricStyle != null">
         #{baldricStyle,jdbcType=INTEGER},
@@ -177,8 +177,8 @@
       <if test="goodsNum != null">
         goods_num = #{goodsNum,jdbcType=INTEGER},
       </if>
-      <if test="flog != null">
-        flog = #{flog,jdbcType=INTEGER},
+      <if test="flag != null">
+        flag = #{flag,jdbcType=INTEGER},
       </if>
       <if test="baldricStyle != null">
         baldric_style = #{baldricStyle,jdbcType=INTEGER},
@@ -204,7 +204,7 @@
       goods_color = #{goodsColor,jdbcType=INTEGER},
       goods_dantao = #{goodsDantao,jdbcType=INTEGER},
       goods_num = #{goodsNum,jdbcType=INTEGER},
-      flog = #{flog,jdbcType=INTEGER},
+      flag = #{flag,jdbcType=INTEGER},
       baldric_style = #{baldricStyle,jdbcType=INTEGER},
       goods_changhe_id = #{goodsChangheId,jdbcType=INTEGER},
       goods_xiebao_style = #{goodsXiebaoStyle,jdbcType=INTEGER}

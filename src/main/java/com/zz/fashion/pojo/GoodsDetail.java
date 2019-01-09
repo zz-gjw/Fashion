@@ -23,7 +23,7 @@ public class GoodsDetail {
 
     private Integer goodsNum;
 
-    private Integer flog;
+    private Integer flag;
 
     private Integer baldricStyle;
 
@@ -119,12 +119,12 @@ public class GoodsDetail {
         this.goodsNum = goodsNum;
     }
 
-    public Integer getFlog() {
-        return flog;
+    public Integer getFlag() {
+        return flag;
     }
 
-    public void setFlog(Integer flog) {
-        this.flog = flog;
+    public void setFlag(Integer flag) {
+        this.flag = flag;
     }
 
     public Integer getBaldricStyle() {

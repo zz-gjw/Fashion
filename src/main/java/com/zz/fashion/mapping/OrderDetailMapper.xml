@@ -7,6 +7,17 @@
     <result column="o_goods_id" jdbcType="INTEGER" property="oGoodsId" />
     <result column="goods_num" jdbcType="INTEGER" property="goodsNum" />
   </resultMap>
+
+  <resultMap id="BaseResultMap1" type="com.zz.fashion.pojo.OrderDetail">
+    <id column="order_detail_id" jdbcType="INTEGER" property="orderDetailId" />
+    <result column="d_order_id" jdbcType="INTEGER" property="dOrderId" />
+    <result column="o_goods_id" jdbcType="INTEGER" property="oGoodsId" />
+    <result column="goods_num" jdbcType="INTEGER" property="goodsNum" />
+    <collection property="goods"
+                resultMap="com.zz.fashion.dao.GoodsMapper.BaseResultMap"
+    ></collection>
+  </resultMap>
+
   <sql id="Base_Column_List">
     order_detail_id, d_order_id, o_goods_id, goods_num
   </sql>

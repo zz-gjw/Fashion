@@ -36,7 +36,7 @@ public class GoodsController {
         return goodsService.findMenWear();
     }
 
-    @ApiOperation(notes="根据路径中传递的男装类型（manStyleId），查询该男装类型的所有商品",value = "根据男装类型查询该类型的所有商品的接口")
+    @ApiOperation(notes="根据路径中传递的男装类型（manStyleId），查询该男装类型的所有商品。manStyleId=1男装类型为：商务。manStyleId=2男装类型为：休闲。manStyleId=3男装类型为：旅行。",value = "根据男装类型查询该类型的所有商品的接口")
     @GetMapping("findMenWearById.do")
     public ResultVo findMenWearById(Integer manStyleId){
         return goodsService.findMenWearById(manStyleId);

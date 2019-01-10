@@ -150,4 +150,17 @@
       goods_create_date = #{goodsCreateDate,jdbcType=DATE}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="findClothImg" resultMap="BaseResultMap">
+     select goods_pic_url from t_goods  where goods_style_id = 2
+  </select>
+  
+  <select id="findMatch" resultMap="BaseResultMap">
+    select goods_pic_url from t_goods  tg
+    inner join t_goods_detail tgd
+    on tg.id = tgd.goods_id
+    where tgd.goods_dantao=1
+
+  </select>
+
 </mapper>

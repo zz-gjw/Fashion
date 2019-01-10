@@ -1,6 +1,7 @@
 package com.zz.fashion.serviceimpl;
 
 
+import com.zz.fashion.consts.SystemConst;
 import com.zz.fashion.dao.UserMapper;
 import com.zz.fashion.pojo.User;
 import com.zz.fashion.service.UserService;
@@ -20,6 +21,7 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.selectByName(phone);
         if (user!=null){
             if (user.getPassword().equals(password)){
+                SystemConst.currUsers.put("user", user);
                 return ResultVo.setOK(user);
             }
         }

@@ -22,6 +22,9 @@ public interface GoodsMapper {
     //查询女士套装图片
     List<Goods> findMatch();
 
-    //展示所有服饰
-    List<Goods> findAll();
+    //展示所有男装服饰
+    List<Goods> findAllMen();
+
+    //根据男装类型查询该类型的所有商品
+    List<Goods> findAllMenByStyleId(Integer manStyleId);
 }

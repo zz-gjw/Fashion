@@ -30,10 +30,16 @@ public class GoodsController {
         return  goodsService.findMatch();
     }
 
-    @ApiOperation(notes="根据指定类型id查询对应类型的所有服饰",value = "主要获取指定分类的所有服饰")
-    @GetMapping("dynamicQueryAll.do")
-    public ResultVo DynamicQueryAll(){
-        return goodsService.findAll();
+    @ApiOperation(notes="展示男装的详细信息，包括价格，颜色，尺寸.......",value = "展示男装的接口")
+    @GetMapping("findMenWear.do")
+    public ResultVo findMenWear(){
+        return goodsService.findMenWear();
+    }
+
+    @ApiOperation(notes="根据路径中传递的男装类型（manStyleId），查询该男装类型的所有商品",value = "根据男装类型查询该类型的所有商品的接口")
+    @GetMapping("findMenWearById.do")
+    public ResultVo findMenWearById(Integer manStyleId){
+        return goodsService.findMenWearById(manStyleId);
     }
 
 

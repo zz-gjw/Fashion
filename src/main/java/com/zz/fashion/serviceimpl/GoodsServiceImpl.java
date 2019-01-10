@@ -39,11 +39,21 @@ public class GoodsServiceImpl  implements GoodsService {
         }
     }
 
-    //展示所有服饰
+    //展示所有男装
     @Override
-    public ResultVo findAll() {
-        List<Goods> a = goodsMapper.findAll();
+    public ResultVo findMenWear() {
+        List<Goods> a = goodsMapper.findAllMen();
         if(a != null){
+            return ResultVo.setOK(a);
+        }
+        return ResultVo.setERROR();
+    }
+
+    //根据男装类型查询该类型的所有商品
+    @Override
+    public ResultVo findMenWearById(Integer manStyleId) {
+        List<Goods> a = goodsMapper.findAllMenByStyleId(manStyleId);
+        if (a != null){
             return ResultVo.setOK(a);
         }
         return ResultVo.setERROR();

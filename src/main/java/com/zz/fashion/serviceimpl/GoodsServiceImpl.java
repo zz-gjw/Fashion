@@ -35,10 +35,17 @@ public class GoodsServiceImpl  implements GoodsService {
         if(match.size() >= 1){
           return   ResultVo.setOK(match);
         }else {
-
             return ResultVo.setERROR();
-
         }
+    }
 
+    //展示所有服饰
+    @Override
+    public ResultVo findAll() {
+        List<Goods> a = goodsMapper.findAll();
+        if(a != null){
+            return ResultVo.setOK(a);
+        }
+        return ResultVo.setERROR();
     }
 }

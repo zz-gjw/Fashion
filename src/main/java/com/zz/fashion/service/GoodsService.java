@@ -8,4 +8,7 @@ public interface GoodsService {
     ResultVo findImg();
     //查询女士套装图片
     ResultVo findMatch();
+
+    //展示所有
+    ResultVo findAll();
 }

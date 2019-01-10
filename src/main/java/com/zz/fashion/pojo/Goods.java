@@ -23,6 +23,26 @@ public class Goods {
 
     private Date goodsCreateDate;
 
+    private GoodsDetail goodsDetail;
+
+    private GoodsStyles goodsStyles;
+
+    public GoodsStyles getGoodsStyles() {
+        return goodsStyles;
+    }
+
+    public void setGoodsStyles(GoodsStyles goodsStyles) {
+        this.goodsStyles = goodsStyles;
+    }
+
+    public GoodsDetail getGoodsDetail() {
+        return goodsDetail;
+    }
+
+    public void setGoodsDetail(GoodsDetail goodsDetail) {
+        this.goodsDetail = goodsDetail;
+    }
+
     public Integer getId() {
         return id;
     }

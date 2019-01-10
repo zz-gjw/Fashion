@@ -18,18 +18,22 @@ public class GoodsController {
     private GoodsService goodsService;
 
 
-    @ApiOperation(notes="女装首页信息展示",value = "主要获取女装的图片",tags = "首页信息")
+    @ApiOperation(notes="女装首页信息展示",value = "主要获取女装的图片")
     @GetMapping("womensale.do")
     public ResultVo findHotSale(){
          return  goodsService.findImg();
-
     }
 
-    @ApiOperation(notes="女装首页信息展示",value = "主要获取女套装的图片",tags = "首页信息")
+    @ApiOperation(notes="女装首页信息展示",value = "主要获取女套装的图片")
     @GetMapping("womenMath.do")
     public ResultVo findMatch(){
         return  goodsService.findMatch();
+    }
 
+    @ApiOperation(notes="根据指定类型id查询对应类型的所有服饰",value = "主要获取指定分类的所有服饰")
+    @GetMapping("dynamicQueryAll.do")
+    public ResultVo DynamicQueryAll(){
+        return goodsService.findAll();
     }
 
 

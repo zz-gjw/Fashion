@@ -18,6 +18,7 @@ public class UserServiceImpl implements UserService {
     //登录
     @Override
     public ResultVo findUserByName(String phone, String password) {
+
         User user = userMapper.selectByName(phone);
         if (user!=null){
             if (user.getPassword().equals(password)){

@@ -26,28 +26,28 @@ public class UserController {
      * @param password
      * @return
      */
-    @ApiOperation(notes = "微信/支付宝(全是使用的电话号码登录)中的一个键和值和密码键值对",tags = "登录",value = "用户登录接口")
+    @ApiOperation(notes = "微信/支付宝(全是使用的电话号码登录)中的一个键和值和密码键值对",value = "用户登录接口")
     @PostMapping("login.do")
     public ResultVo login(@ApiParam(value = "微信/支付宝中的一个")String phone, String password){
         return userService.findUserByName(phone,password);
     }
 
     //注册
-    @ApiOperation(notes = "使用手机号注册",tags = "注册",value = "用户注册接口")
+    @ApiOperation(notes = "使用手机号注册",value = "用户注册接口")
     @PostMapping("addUser.do")
     public  ResultVo addUser(@ApiParam(value = "phone对应账号，password对应密码")User user){
         return userService.addUser(user);
     }
 
     //判断该手机号是否注册过用户
-    @ApiOperation(notes = "通过输入的手机号判断该手机号是否注册过用户",tags = "判断是否为已注册用户",value = "判断是否为已注册用户接口")
+    @ApiOperation(notes = "通过输入的手机号判断该手机号是否注册过用户",value = "判断是否为已注册用户接口")
     @PostMapping("IsUser.do")
     public ResultVo IsUser(String phone){
         return userService.IsUser(phone);
     }
 
     //修改密码
-    @ApiOperation(notes = "输入手机号,修改该用户的密码",tags = "修改密码",value = "用户修改密码接口")
+    @ApiOperation(notes = "输入手机号,修改该用户的密码",value = "用户修改密码接口")
     @PostMapping("updatePassword.do")
     public ResultVo updatePassword(User user){
         return userService.updatePassword(user);

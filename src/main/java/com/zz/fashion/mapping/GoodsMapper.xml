@@ -13,6 +13,24 @@
     <result column="goods_shop_id" jdbcType="INTEGER" property="goodsShopId" />
     <result column="goods_create_date" jdbcType="DATE" property="goodsCreateDate" />
   </resultMap>
+
+  <resultMap id="BaseResultMap1" type="com.zz.fashion.pojo.Goods">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="goods_style_id" jdbcType="INTEGER" property="goodsStyleId" />
+    <result column="goods_sales" jdbcType="INTEGER" property="goodsSales" />
+    <result column="love_num" jdbcType="INTEGER" property="loveNum" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+    <result column="goods_price" jdbcType="DOUBLE" property="goodsPrice" />
+    <result column="goods_pic_url" jdbcType="VARCHAR" property="goodsPicUrl" />
+    <result column="goods_shop_id" jdbcType="INTEGER" property="goodsShopId" />
+    <result column="goods_create_date" jdbcType="DATE" property="goodsCreateDate" />
+    
+    <collection property="goodsDetail" resultMap="com.zz.fashion.dao.GoodsDetailMapper.BaseResultMap"></collection>
+    <collection property="goodsStyles" resultMap="com.zz.fashion.dao.GoodsStylesMapper.BaseResultMap"></collection>
+  </resultMap>
+  
+
   <sql id="Base_Column_List">
     id, goods_name, goods_style_id, goods_sales, love_num, flag, goods_price, goods_pic_url, 
     goods_shop_id, goods_create_date
@@ -161,6 +179,14 @@
     on tg.id = tgd.goods_id
     where tgd.goods_dantao=1
 
+  </select>
+
+  <select id="findAll" resultMap="BaseResultMap1">
+    select * from t_goods g
+    INNER JOIN t_goods_styles gs
+    on g.goods_style_id=gs.id
+    INNER JOIN t_goods_detail gd
+    on g.id=gd.goods_id
   </select>
 
 </mapper>

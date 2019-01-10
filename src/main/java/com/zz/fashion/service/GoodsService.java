@@ -9,9 +9,6 @@ public interface GoodsService {
     //查询女士套装图片
     ResultVo findMatch();
 
-    //展示所有男装
-    ResultVo findMenWear();
-
-    //根据男装类型查询该类型的所有商品
-    ResultVo findMenWearById(Integer manStyleId);
+    //展示所有
+    ResultVo findAll();
 }

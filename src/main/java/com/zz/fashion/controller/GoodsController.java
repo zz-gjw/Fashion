@@ -42,6 +42,18 @@ public class GoodsController {
         return goodsService.findMenWearById(manStyleId);
     }
 
+    @ApiOperation(notes = "所有佩饰",value = "查询所有佩饰，没有参数")
+    @GetMapping("selectAllBaLdric.do")
+    public  ResultVo selectBaLdric(){
+        return goodsService.selectAllPeiShi();
+    }
 
+    @ApiOperation(notes = "按条件查询佩饰",value = "price价格区间，detail佩饰类型，saleStyle销量排序方式1或0，priceStyle价格排序方式1或0，排序时1代表正序，0代表倒叙，参数个数按需求传")
+    @GetMapping("selectOrSortBaLdric.do")
+    public  ResultVo selectOrSortBaLdric(String price, String detailStyleId, String saleStyle, String priceStyle) {
+        ResultVo ro = goodsService.sortOrSelectDetail(price, detailStyleId, saleStyle,priceStyle);
+
+        return ro;
+    }
 
 }

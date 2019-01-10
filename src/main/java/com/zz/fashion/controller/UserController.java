@@ -52,4 +52,8 @@ public class UserController {
     public ResultVo updatePassword(User user){
         return userService.updatePassword(user);
     }
+
+
+
+
 }

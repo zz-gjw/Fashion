@@ -13,9 +13,6 @@ public interface GoodsService {
     //查询女士套装图片
     ResultVo findMatch();
 
-    //展示所有
-    ResultVo findAll();
-
     //所有佩饰
     ResultVo selectAllPeiShi();
 

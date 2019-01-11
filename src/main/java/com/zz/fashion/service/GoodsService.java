@@ -16,6 +16,7 @@ public interface GoodsService {
     //所有佩饰
     ResultVo selectAllPeiShi();
 
+    //佩饰查询
     ResultVo sortOrSelectDetail(String price, String detailStyleId, String saleStyle, String priceStyle);
 
     //展示所有男装

@@ -67,7 +67,7 @@ public class GoodsServiceImpl  implements GoodsService {
         List<Goods> list = goodsMapper.selectAllPeiShi();
 
         if (list != null) {
-            ResultVo.setOK(list);
+          return  ResultVo.setOK(list);
         }
 
         return ResultVo.setERROR();

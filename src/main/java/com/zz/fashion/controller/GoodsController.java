@@ -48,7 +48,7 @@ public class GoodsController {
         return goodsService.selectAllPeiShi();
     }
 
-    @ApiOperation(notes = "按条件查询所需佩饰",value = "price价格区间，detail佩饰类型，saleStyle销量排序方式1或0，priceStyle价格排序方式1或0，排序时1代表正序，0代表倒叙，参数个数按需求传saleStyle和priceStyle两个只能选一个")
+    @ApiOperation(notes = "按条件查询所需佩饰",value = "price价格区间，detailStyleId佩饰类型id，saleStyle销量排序方式1或0，priceStyle价格排序方式1或0，排序时1代表正序，0代表倒叙，参数个数按需求传saleStyle和priceStyle两个只能选一个")
     @GetMapping("selectOrSortBaLdric.do")
     public  ResultVo selectOrSortBaLdric(String price, String detailStyleId, String saleStyle, String priceStyle) {
 

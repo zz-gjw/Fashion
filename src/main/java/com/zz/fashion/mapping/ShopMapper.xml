@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zz.fashion.dao.ShopMapper">
+  <resultMap id="BaseResultMap" type="com.zz.fashion.pojo.Shop">
+    <id column="a_shop_id" jdbcType="INTEGER" property="aShopId" />
+    <result column="shop_name" jdbcType="VARCHAR" property="shopName" />
+    <result column="shop_pic_url" jdbcType="VARCHAR" property="shopPicUrl" />
+    <result column="shop_weixing" jdbcType="VARCHAR" property="shopWeixing" />
+    <result column="shop_guanzhu" jdbcType="INTEGER" property="shopGuanzhu" />
+    <result column="shop_fengsi" jdbcType="INTEGER" property="shopFengsi" />
+    <result column="shop_xiaoliang" jdbcType="INTEGER" property="shopXiaoliang" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+    <result column="shop_info" jdbcType="VARCHAR" property="shopInfo" />
+    <result column="shop_youhui" jdbcType="VARCHAR" property="shopYouhui" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    a_shop_id, shop_name, shop_pic_url, shop_weixing, shop_guanzhu, shop_fengsi, shop_xiaoliang, 
+    flag, shop_info, shop_youhui
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_shop
+    where a_shop_id = #{aShopId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_shop
+    where a_shop_id = #{aShopId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zz.fashion.pojo.Shop">
+    insert into t_shop (a_shop_id, shop_name, shop_pic_url, 
+      shop_weixing, shop_guanzhu, shop_fengsi, 
+      shop_xiaoliang, flag, shop_info, 
+      shop_youhui)
+    values (#{aShopId,jdbcType=INTEGER}, #{shopName,jdbcType=VARCHAR}, #{shopPicUrl,jdbcType=VARCHAR}, 
+      #{shopWeixing,jdbcType=VARCHAR}, #{shopGuanzhu,jdbcType=INTEGER}, #{shopFengsi,jdbcType=INTEGER}, 
+      #{shopXiaoliang,jdbcType=INTEGER}, #{flag,jdbcType=INTEGER}, #{shopInfo,jdbcType=VARCHAR}, 
+      #{shopYouhui,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zz.fashion.pojo.Shop">
+    insert into t_shop
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="aShopId != null">
+        a_shop_id,
+      </if>
+      <if test="shopName != null">
+        shop_name,
+      </if>
+      <if test="shopPicUrl != null">
+        shop_pic_url,
+      </if>
+      <if test="shopWeixing != null">
+        shop_weixing,
+      </if>
+      <if test="shopGuanzhu != null">
+        shop_guanzhu,
+      </if>
+      <if test="shopFengsi != null">
+        shop_fengsi,
+      </if>
+      <if test="shopXiaoliang != null">
+        shop_xiaoliang,
+      </if>
+      <if test="flag != null">
+        flag,
+      </if>
+      <if test="shopInfo != null">
+        shop_info,
+      </if>
+      <if test="shopYouhui != null">
+        shop_youhui,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="aShopId != null">
+        #{aShopId,jdbcType=INTEGER},
+      </if>
+      <if test="shopName != null">
+        #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopPicUrl != null">
+        #{shopPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="shopWeixing != null">
+        #{shopWeixing,jdbcType=VARCHAR},
+      </if>
+      <if test="shopGuanzhu != null">
+        #{shopGuanzhu,jdbcType=INTEGER},
+      </if>
+      <if test="shopFengsi != null">
+        #{shopFengsi,jdbcType=INTEGER},
+      </if>
+      <if test="shopXiaoliang != null">
+        #{shopXiaoliang,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="shopInfo != null">
+        #{shopInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="shopYouhui != null">
+        #{shopYouhui,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zz.fashion.pojo.Shop">
+    update t_shop
+    <set>
+      <if test="shopName != null">
+        shop_name = #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopPicUrl != null">
+        shop_pic_url = #{shopPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="shopWeixing != null">
+        shop_weixing = #{shopWeixing,jdbcType=VARCHAR},
+      </if>
+      <if test="shopGuanzhu != null">
+        shop_guanzhu = #{shopGuanzhu,jdbcType=INTEGER},
+      </if>
+      <if test="shopFengsi != null">
+        shop_fengsi = #{shopFengsi,jdbcType=INTEGER},
+      </if>
+      <if test="shopXiaoliang != null">
+        shop_xiaoliang = #{shopXiaoliang,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="shopInfo != null">
+        shop_info = #{shopInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="shopYouhui != null">
+        shop_youhui = #{shopYouhui,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where a_shop_id = #{aShopId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zz.fashion.pojo.Shop">
+    update t_shop
+    set shop_name = #{shopName,jdbcType=VARCHAR},
+      shop_pic_url = #{shopPicUrl,jdbcType=VARCHAR},
+      shop_weixing = #{shopWeixing,jdbcType=VARCHAR},
+      shop_guanzhu = #{shopGuanzhu,jdbcType=INTEGER},
+      shop_fengsi = #{shopFengsi,jdbcType=INTEGER},
+      shop_xiaoliang = #{shopXiaoliang,jdbcType=INTEGER},
+      flag = #{flag,jdbcType=INTEGER},
+      shop_info = #{shopInfo,jdbcType=VARCHAR},
+      shop_youhui = #{shopYouhui,jdbcType=VARCHAR}
+    where a_shop_id = #{aShopId,jdbcType=INTEGER}
+  </update>
+</mapper>

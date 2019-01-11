@@ -30,16 +30,10 @@ public class GoodsController {
         return  goodsService.findMatch();
     }
 
-    @ApiOperation(notes="展示男装的详细信息，包括价格，颜色，尺寸.......",value = "展示男装的接口")
-    @GetMapping("findMenWear.do")
-    public ResultVo findMenWear(){
-        return goodsService.findMenWear();
-    }
-
-    @ApiOperation(notes="根据路径中传递的男装类型（manStyleId），查询该男装类型的所有商品。manStyleId=1男装类型为：商务。manStyleId=2男装类型为：休闲。manStyleId=3男装类型为：旅行。",value = "根据男装类型查询该类型的所有商品的接口")
-    @GetMapping("findMenWearById.do")
-    public ResultVo findMenWearById(Integer manStyleId){
-        return goodsService.findMenWearById(manStyleId);
+    @ApiOperation(notes="根据指定类型id查询对应类型的所有服饰",value = "主要获取指定分类的所有服饰")
+    @GetMapping("dynamicQueryAll.do")
+    public ResultVo DynamicQueryAll(){
+        return goodsService.findAll();
     }
 
     @ApiOperation(notes = "所有佩饰",value = "查询所有佩饰，没有参数")
@@ -48,7 +42,7 @@ public class GoodsController {
         return goodsService.selectAllPeiShi();
     }
 
-    @ApiOperation(notes = "按条件查询佩饰",value = "price价格区间，detail佩饰类型，saleStyle销量排序方式1或0，priceStyle价格排序方式1或0，排序时1代表正序，0代表倒叙，参数个数按需求传")
+    @ApiOperation(notes = "按条件查询佩饰",value = "price价格区间，detail佩饰类型，saleStyle销量排序方式1或0，priceStyle价格排序方式1或0，排序时1代表正序，0代表倒叙，参数个数按需求传saleStyle和priceStyle两个只能选一个")
     @GetMapping("selectOrSortBaLdric.do")
     public  ResultVo selectOrSortBaLdric(String price, String detailStyleId, String saleStyle, String priceStyle) {
         ResultVo ro = goodsService.sortOrSelectDetail(price, detailStyleId, saleStyle,priceStyle);

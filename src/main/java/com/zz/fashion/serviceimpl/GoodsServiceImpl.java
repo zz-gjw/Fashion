@@ -7,7 +7,9 @@ import com.zz.fashion.vo.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class GoodsServiceImpl  implements GoodsService {
@@ -48,4 +50,46 @@ public class GoodsServiceImpl  implements GoodsService {
         }
         return ResultVo.setERROR();
     }
+
+    @Override
+    public ResultVo selectAllPeiShi() {
+        List<Goods> list = goodsMapper.selectAllPeiShi();
+
+        if (list != null) {
+            ResultVo.setOK(list);
+        }
+
+        return ResultVo.setERROR();
+    }
+
+    @Override
+    public ResultVo sortOrSelectDetail(String price, String detailStyleId, String saleStyle, String priceStyle) {
+
+        Map<String, Object> map = new HashMap<String, Object>();
+        if (price != null && !price.equals("")) {
+            Double price1 = Double.parseDouble(price);
+            map.put("price", price1);
+        }
+
+        if (detailStyleId != null && !detailStyleId.equals("")) {
+            Integer detailStyleId1 = Integer.parseInt(detailStyleId);
+            map.put("detailStyleId",detailStyleId1);
+        }
+
+        if (saleStyle != null && !saleStyle.equals("")) {
+            Integer saleStyle1 = Integer.parseInt(saleStyle);
+            map.put("saleStyle",saleStyle1);
+        }
+
+        if (priceStyle != null && !priceStyle.equals("")) {
+            Integer priceStyle1 = Integer.parseInt(priceStyle);
+            map.put("priceStyle",priceStyle1);
+        }
+
+        List<Goods> list = goodsMapper.sortOrSelectDetail(map);
+
+        return ResultVo.setOK(list);
+    }
+
+
 }

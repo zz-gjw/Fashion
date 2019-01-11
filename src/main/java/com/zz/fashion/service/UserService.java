@@ -9,7 +9,7 @@ public interface UserService {
     ResultVo findUserByName(String phone, String password);
 
     //注册
-    ResultVo addUser(String phone, String password);
+    ResultVo addUser(User user);
 
     //判断该手机号是否注册过用户
     ResultVo IsUser(String phone);

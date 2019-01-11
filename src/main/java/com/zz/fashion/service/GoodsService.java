@@ -1,6 +1,9 @@
 package com.zz.fashion.service;
 
 import com.zz.fashion.vo.ResultVo;
+
+import java.util.Map;
+
 public interface GoodsService {
 
 
@@ -11,4 +14,9 @@ public interface GoodsService {
 
     //展示所有
     ResultVo findAll();
+
+    //所有佩饰
+    ResultVo selectAllPeiShi();
+
+    ResultVo sortOrSelectDetail(String price, String detailStyleId, String saleStyle, String priceStyle);
 }

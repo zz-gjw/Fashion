@@ -31,8 +31,6 @@ public class GoodsDetail {
 
     private Integer goodsXiebaoStyle;
 
-    private ManGoodsStyle manGoodsStyle;
-
     public Integer getId() {
         return id;
     }

@@ -2,6 +2,7 @@ package com.zz.fashion.dao;
 
 import com.zz.fashion.pojo.Goods;
 import java.util.List;
+import java.util.Map;
 
 public interface GoodsMapper {
     int deleteByPrimaryKey(Integer id);
@@ -24,4 +25,12 @@ public interface GoodsMapper {
 
     //展示所有服饰
     List<Goods> findAll();
+
+    //展示所有佩饰
+    List<Goods> selectAllPeiShi();
+
+    //各种佩饰排序展示筛选
+    List<Goods> sortOrSelectDetail(Map<String, Object> map);
+
+
 }

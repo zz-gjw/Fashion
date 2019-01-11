@@ -1,7 +1,7 @@
 package com.zz.fashion.pojo;
 
 import java.util.Date;
-
+//商品
 public class Goods {
     private Integer id;
 

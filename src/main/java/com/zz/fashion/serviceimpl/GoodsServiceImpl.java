@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+//商品
 @Service
 public class GoodsServiceImpl  implements GoodsService {
 

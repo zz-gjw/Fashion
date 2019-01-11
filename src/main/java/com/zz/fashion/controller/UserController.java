@@ -35,8 +35,8 @@ public class UserController {
     //注册
     @ApiOperation(notes = "使用手机号注册",value = "用户注册接口")
     @PostMapping("addUser.do")
-    public  ResultVo addUser(@ApiParam(value = "phone对应账号，password对应密码")User user){
-        return userService.addUser(user);
+    public  ResultVo addUser(@ApiParam(value = "phone对应账号，password对应密码")String phone, String password){
+        return userService.addUser(phone, password);
     }
 
     //判断该手机号是否注册过用户
@@ -52,8 +52,4 @@ public class UserController {
     public ResultVo updatePassword(User user){
         return userService.updatePassword(user);
     }
-
-
-
-
 }

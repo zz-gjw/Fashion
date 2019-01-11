@@ -42,13 +42,24 @@ public class GoodsController {
         return goodsService.selectAllPeiShi();
     }
 
-    @ApiOperation(notes = "按条件查询所需佩饰",value = "price价格区间，detail佩饰类型，saleStyle销量排序方式1或0，priceStyle价格排序方式1或0，排序时1代表正序，0代表倒叙，参数个数按需求传saleStyle和priceStyle两个只能选一个")
+    @ApiOperation(notes = "按条件查询佩饰",value = "price价格区间，detail佩饰类型，saleStyle销量排序方式1或0，priceStyle价格排序方式1或0，排序时1代表正序，0代表倒叙，参数个数按需求传saleStyle和priceStyle两个只能选一个")
     @GetMapping("selectOrSortBaLdric.do")
     public  ResultVo selectOrSortBaLdric(String price, String detailStyleId, String saleStyle, String priceStyle) {
-
         ResultVo ro = goodsService.sortOrSelectDetail(price, detailStyleId, saleStyle,priceStyle);
 
         return ro;
+    }
+
+    @ApiOperation(notes="根据路径中传递的男装类型（manStyleId），查询该男装类型的所有商品。manStyleId=1男装类型为：商务",value = "根据男装类型查询该类型的所有商品的接口")
+    @GetMapping("findMenWearById.do")
+    public ResultVo findMenWearById(Integer manStyleId){
+        return goodsService.findMenWearById(manStyleId);
+    }
+
+    @ApiOperation(notes="展示男装的详细信息，包括价格，颜色，尺寸.......",value = "展示男装的接口")
+    @GetMapping("findMenWear.do")
+    public ResultVo findMenWear(){
+        return goodsService.findMenWear();
     }
 
 }

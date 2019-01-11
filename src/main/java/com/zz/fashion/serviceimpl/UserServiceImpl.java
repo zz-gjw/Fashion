@@ -31,10 +31,16 @@ public class UserServiceImpl implements UserService {
 
     //注册
     @Override
-    public ResultVo addUser(User user) {
-        int a = userMapper.insertUser(user);
-        if(a > 0){
-            return ResultVo.setOK(user);
+    public ResultVo addUser(String phone,String password) {
+        User abc = userMapper.selectByName(phone);
+        if (abc == null){
+            User user = new User();
+            user.setPhone(phone);
+            user.setPassword(password);
+            int a = userMapper.insertUser(user);
+            if (a > 0){
+                return ResultVo.setOK(user);
+            }
         }
         return ResultVo.setERROR();
     }

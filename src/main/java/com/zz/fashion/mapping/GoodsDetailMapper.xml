@@ -18,6 +18,27 @@
     <result column="goods_changhe_id" jdbcType="INTEGER" property="goodsChangheId" />
     <result column="goods_xiebao_style" jdbcType="INTEGER" property="goodsXiebaoStyle" />
   </resultMap>
+
+  <resultMap id="BaseResultMap1" type="com.zz.fashion.pojo.GoodsDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="goods_id" jdbcType="INTEGER" property="goodsId" />
+    <result column="man_goods_style_id" jdbcType="INTEGER" property="manGoodsStyleId" />
+    <result column="woman_buwei" jdbcType="INTEGER" property="womanBuwei" />
+    <result column="woman_top_style" jdbcType="INTEGER" property="womanTopStyle" />
+    <result column="woman_down_style" jdbcType="INTEGER" property="womanDownStyle" />
+    <result column="goods_chuanda_style" jdbcType="INTEGER" property="goodsChuandaStyle" />
+    <result column="goods_size" jdbcType="INTEGER" property="goodsSize" />
+    <result column="goods_color" jdbcType="INTEGER" property="goodsColor" />
+    <result column="goods_dantao" jdbcType="INTEGER" property="goodsDantao" />
+    <result column="goods_num" jdbcType="INTEGER" property="goodsNum" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+    <result column="baldric_style" jdbcType="INTEGER" property="baldricStyle" />
+    <result column="goods_changhe_id" jdbcType="INTEGER" property="goodsChangheId" />
+    <result column="goods_xiebao_style" jdbcType="INTEGER" property="goodsXiebaoStyle" />
+
+    <collection property="manGoodsStyle" resultMap="com.zz.fashion.dao.ManGoodsStyleMapper.BaseResultMap"></collection>
+  </resultMap>
+
   <sql id="Base_Column_List">
     id, goods_id, man_goods_style_id, woman_buwei, woman_top_style, woman_down_style, 
     goods_chuanda_style, goods_size, goods_color, goods_dantao, goods_num, flag, baldric_style, 

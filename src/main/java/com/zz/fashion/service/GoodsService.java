@@ -4,6 +4,7 @@ import com.zz.fashion.vo.ResultVo;
 
 import java.util.Map;
 
+//商品
 public interface GoodsService {
 
 

@@ -40,7 +40,7 @@
     select * from t_goods where goods_style_id=3 and flag=1
   </select>
 
-  <!--map：price，detailStyleId,saleStyle,priceStyle-->
+  <!--map：价钱price，detailStyleId,saleStyle,priceStyle-->
   <select id="sortOrSelectDetail" parameterType="map" resultMap="BaseResultMap">
     select * from  t_goods g
     INNER JOIN t_goods_detail gd

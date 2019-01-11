@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//商品
 @Service
 public class GoodsServiceImpl  implements GoodsService {
 

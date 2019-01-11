@@ -212,11 +212,11 @@
   </update>
 
   <select id="findClothImg" resultMap="BaseResultMap">
-     select goods_pic_url from t_goods  where goods_style_id = 2
+select  id,goods_name,goods_pic_url from t_goods  where goods_style_id = 2
   </select>
   
   <select id="findMatch" resultMap="BaseResultMap">
-    select goods_pic_url from t_goods  tg
+    select tg.id,tg.goods_name,goods_pic_url from t_goods  tg
     inner join t_goods_detail tgd
     on tg.id = tgd.goods_id
     where tgd.goods_dantao=1
@@ -230,6 +230,54 @@
     INNER JOIN t_goods_detail gd
     on g.id=gd.goods_id
   </select>
+  <!--女士按照销量查询-->
+  <select id="findSaleVolume" resultMap="BaseResultMap">
+     select id,goods_name,goods_price,goods_pic_url,goods_sales  from t_goods where goods_style_id = 2 order by goods_sales  asc
+  </select>
+  <!--女士服装价格升序查询-->
+  <select id="findSortByPriceAsc" resultMap="BaseResultMap">
+    select id,goods_name,goods_price,goods_pic_url,goods_sales  from t_goods where goods_style_id = 2 order by goods_price asc
+  </select>
+
+  <!--女士服装价格降序查询-->
+  <select id="findSortByPriceDesc" resultMap="BaseResultMap">
+    select id, goods_name,goods_price,goods_pic_url,goods_sales  from t_goods where goods_style_id = 2 order by goods_price desc
+  </select>
+
+  <!-- 女士服装按照价格进行筛选-->
+  <select id="filterByPrice"  parameterType="int"  resultMap="BaseResultMap">
+    select id,goods_name,goods_price,goods_pic_url,goods_sales  from t_goods where goods_price <![CDATA[<]]> #{price}
+
+  </select>
+  <!--按照女士的服装的最新上架时间进行查询-->
+
+  <select id="clothByNew" resultMap="BaseResultMap">
+    SELECT id,goods_name,goods_price,love_num,goods_pic_url,goods_create_date   FROM t_goods  where DATE_SUB(CURDATE(), INTERVAL 45 DAY) <![CDATA[<]]> date(goods_create_date)
+  </select>
+  <!--最新上架的女装的单品-->
+    <select id="colthByNewDan" resultMap="BaseResultMap">
+        select tg.id,tg.goods_name,tg.goods_price,tg.love_num,tg.goods_pic_url , tg.goods_create_date FROM t_goods tg
+        inner join t_goods_detail tgd on
+        tg.id=tgd.goods_id
+        where goods_dantao = 0
+        and DATE_SUB(CURDATE(), INTERVAL 60 DAY) <![CDATA[<=]]> date(goods_create_date)
+
+    </select>
+    <!--最新上架的女装的单品-->
+    <select id="colthByNewBoth" resultMap="BaseResultMap">
+        select tg.id,tg.goods_name,tg.goods_price,tg.love_num,tg.goods_pic_url , tg.goods_create_date FROM t_goods tg
+        inner join t_goods_detail tgd on
+        tg.id=tgd.goods_id
+        where goods_dantao = 1
+        and DATE_SUB(CURDATE(), INTERVAL 60 DAY) <![CDATA[<=]]> date(goods_create_date)
+    </select>
+    <!--专属搭配更多查询-->
+    <select id="matchMore" resultMap="BaseResultMap">
+     select  tg.id, tg.goods_name,tg.love_num,tg.goods_price,tg.goods_pic_url  from t_goods tg
+     inner join t_goods_detail tgd
+     on tg.id = tgd.goods_id
+     where tgd.goods_dantao =1  and tg.goods_style_id = 2
+    </select>
 
     <select id="findAllMen" resultMap="BaseResultMap1">
     select * from t_goods g

@@ -41,6 +41,30 @@ public class GoodsController {
     public ResultVo findMenWearById(Integer manStyleId){
         return goodsService.findMenWearById(manStyleId);
     }
+    @ApiOperation(notes="女装按照销量进行查询",value = "点击销量按钮获取的信息",tags = "女装销量查询")
+    @GetMapping("saleVolume.do")
+    public ResultVo findSaleVolume(){
+        return  goodsService.findSaleVolume();
+
+    }
+    @ApiOperation(notes="女装按照价格进行查询",value = "点击升序按钮获取的信息",tags = "女装价格升序查询")
+    @GetMapping("priceAsc.do")
+    public ResultVo findSortByPriceAsc(){
+        return  goodsService.findSortByPriceAsc();
+
+    }
+    @ApiOperation(notes="女装按照价格进行查询",value = "点击降序按钮获取的信息",tags = "女装价格降序查询")
+    @GetMapping("priceDesc.do")
+    public ResultVo findSortByPriceDesc(){
+        return  goodsService.findSortByPriceDesc();
+
+    }
+    @ApiOperation(notes="女装按照价格进行筛选",value = "点击筛选按钮获取的信息",tags = "女装价格区间查询")
+    @GetMapping("filter.do")
+    public ResultVo filterByPrice(Integer price ) {
+
+        return goodsService.filterByPrice(price);
+    }
 
     @ApiOperation(notes = "所有佩饰",value = "查询所有佩饰，没有参数")
     @GetMapping("selectAllBaLdric.do")
@@ -48,7 +72,7 @@ public class GoodsController {
         return goodsService.selectAllPeiShi();
     }
 
-    @ApiOperation(notes = "按条件查询所需佩饰",value = "price价格区间，detailStyleId佩饰类型id，saleStyle销量排序方式1或0，priceStyle价格排序方式1或0，排序时1代表正序，0代表倒叙，参数个数按需求传saleStyle和priceStyle两个只能选一个")
+    @ApiOperation(notes = "按条件查询所需佩饰",value = "price价格区间，detail佩饰类型，saleStyle销量排序方式1或0，priceStyle价格排序方式1或0，排序时1代表正序，0代表倒叙，参数个数按需求传saleStyle和priceStyle两个只能选一个")
     @GetMapping("selectOrSortBaLdric.do")
     public  ResultVo selectOrSortBaLdric(String price, String detailStyleId, String saleStyle, String priceStyle) {
 
@@ -56,4 +80,35 @@ public class GoodsController {
 
         return ro;
     }
+    @ApiOperation(notes="女装按照最新时间进行查询",value = "获取最新上架的商品",tags = "女装最新上架查询")
+    @GetMapping("clothByNew.do")
+    public ResultVo clothByNew(){
+        return  goodsService.clothByNew();
+
+    }
+    @ApiOperation(notes="女装按照最新上架单品进行查询",value = "获取最新上架单品的商品",tags = "女装最新上架单品查询")
+    @GetMapping("clothByNewDan.do")
+    public ResultVo clothByNewDan(){
+        return  goodsService.colthByNewDan();
+
+    }
+    @ApiOperation(notes="女装按照最新上架套装进行查询",value = "获取最新上架套装的商品",tags = "女装最新上架套装查询")
+    @GetMapping("clothByNewBoth.do")
+    public ResultVo clothByNewBoth(){
+        return  goodsService.colthByNewBoth();
+
+    }
+    @ApiOperation(notes="女装搭配更多进行查询",value = "获取搭配更多的商品",tags = "女装搭配更多查询")
+    @GetMapping("matchMore.do")
+    public ResultVo matchMore(){
+        return  goodsService.matchMore();
+
+    }
+
+    @ApiOperation(notes="根据指定类型id查询对应类型的所有服饰",value = "主要获取指定分类的所有服饰")
+    @GetMapping("dynamicQueryAll.do")
+    public ResultVo DynamicQueryAll(){
+        return goodsService.findAll();
+    }
+
 }

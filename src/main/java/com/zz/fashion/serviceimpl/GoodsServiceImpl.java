@@ -22,9 +22,7 @@ public class GoodsServiceImpl  implements GoodsService {
     public ResultVo findImg() {
         List<Goods> list = goodsMapper.findClothImg();
 
-        for (Goods li : list){
-            System.out.println(li.getGoodsPicUrl());
-        }
+
         if (list.size() >= 1){
            return ResultVo.setOK(list);
         }
@@ -40,6 +38,67 @@ public class GoodsServiceImpl  implements GoodsService {
         }else {
             return ResultVo.setERROR();
         }
+    }
+
+    @Override
+    public ResultVo findSaleVolume() {
+        List<Goods> saleVolume = goodsMapper.findSaleVolume();
+        if(saleVolume.size() >= 1){
+            return   ResultVo.setOK(saleVolume);
+        }else {
+
+            return ResultVo.setERROR();
+
+        }
+    }
+
+    @Override
+    public ResultVo findSortByPriceAsc() {
+        List<Goods> priceAsc = goodsMapper.findSortByPriceAsc();
+        if(priceAsc.size() >= 1){
+            return   ResultVo.setOK(priceAsc);
+        }else {
+
+            return ResultVo.setERROR();
+
+        }
+    }
+
+    @Override
+    public ResultVo findSortByPriceDesc() {
+        List<Goods> priceAsc = goodsMapper.findSortByPriceDesc();
+        if(priceAsc.size() >= 1){
+            return   ResultVo.setOK(priceAsc);
+        }else {
+
+            return ResultVo.setERROR();
+
+        }
+    }
+
+    @Override
+    public ResultVo filterByPrice(Integer price) {
+        if(price == null || price.equals("")){
+            return  ResultVo.setERROR();
+        }
+        if (price > 0){
+            List<Goods> filterByPrice = goodsMapper.filterByPrice(price);
+            if(filterByPrice.size() >= 1){
+                return   ResultVo.setOK(filterByPrice);
+            }else {
+
+                return ResultVo.setERROR();
+
+            }
+
+        }else {
+            return  ResultVo.setERROR();
+        }
+    }
+
+    @Override
+    public ResultVo findAll() {
+        return null;
     }
 
     //展示所有男装
@@ -101,4 +160,45 @@ public class GoodsServiceImpl  implements GoodsService {
 
         return ResultVo.setOK(list);
     }
+
+    @Override
+    public ResultVo clothByNew() {
+        List<Goods> clothByNew = goodsMapper.clothByNew();
+        if(clothByNew != null){
+            return ResultVo.setOK(clothByNew);
+        }
+        return  ResultVo.setERROR();
+
+    }
+
+    @Override
+    public ResultVo colthByNewDan() {
+
+        List<Goods> clothByNewDan = goodsMapper.colthByNewDan();
+        if(clothByNewDan != null){
+            return ResultVo.setOK(clothByNewDan);
+        }
+        return  ResultVo.setERROR();
+    }
+
+    @Override
+    public ResultVo colthByNewBoth() {
+        List<Goods> clothByNewBoth = goodsMapper.colthByNewBoth();
+        if(clothByNewBoth != null){
+            return ResultVo.setOK(clothByNewBoth);
+        }
+        return  ResultVo.setERROR();
+    }
+
+    @Override
+    public ResultVo matchMore() {
+        List<Goods> matchMore = goodsMapper.matchMore();
+        if(matchMore != null){
+            return ResultVo.setOK(matchMore);
+        }
+        return  ResultVo.setERROR();
+
+    }
+
+
 }

@@ -45,7 +45,7 @@ public class GoodsController {
         return goodsService.findMenWearById(manStyleId);
     }
 
-    @ApiOperation(notes="男装按照销量降序进行查询所有",value = "点击‘销量’获取信息，热销榜单也可以调用")
+    @ApiOperation(notes="男装按照销量降序进行查询所有",value = "男装按照销量降序进行查询所有，点击‘销量’获取信息，热销榜单也可以调用")
     @GetMapping("findMenBySales.do")
     public ResultVo findMenBySales(){
         return goodsService.findMenBySales();

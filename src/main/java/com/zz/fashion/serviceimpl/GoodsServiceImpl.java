@@ -121,6 +121,47 @@ public class GoodsServiceImpl  implements GoodsService {
         return ResultVo.setERROR();
     }
 
+    //按照销量降序进行查询男装
+    @Override
+    public ResultVo findMenBySales() {
+        List<Goods> a = goodsMapper.findBySales();
+        if (a != null){
+            return ResultVo.setOK(a);
+        }else {
+            return ResultVo.setERROR();
+        }
+    }
+
+    //按照价格升降序、价格区间动态查询男装
+    @Override
+    public ResultVo findMenByPrice(String price, String priceStyle) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        if (price != null && !price.equals("")) {
+            Double price1 = Double.parseDouble(price);
+            map.put("price", price1);
+        }
+        if (priceStyle != null && !priceStyle.equals("")) {
+            Integer priceStyle1 = Integer.parseInt(priceStyle);
+            map.put("priceStyle",priceStyle1);
+        }
+        List<Goods> list = goodsMapper.findByPrice(map);
+
+        if (list != null){
+            return ResultVo.setOK(list);
+        }
+        return ResultVo.setERROR();
+    }
+
+    //男装服饰最新上架
+    @Override
+    public ResultVo findMenByTime() {
+        List<Goods> list = goodsMapper.findByTime();
+        if (list != null){
+            return ResultVo.setOK(list);
+        }
+        return ResultVo.setERROR();
+    }
+
     @Override
     public ResultVo selectAllPeiShi() {
         List<Goods> list = goodsMapper.selectAllPeiShi();

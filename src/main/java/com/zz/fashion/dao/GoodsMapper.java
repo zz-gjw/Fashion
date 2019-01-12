@@ -33,6 +33,12 @@ public interface GoodsMapper {
 
     //展示所有男装服饰
     List<Goods> findAllMen();
+    //男装服饰按照销量降序进行查询
+    List<Goods> findBySales();
+    //男装服饰按照价格降序进行动态查询
+    List<Goods> findByPrice(Map<String, Object> map);
+    //男装服饰最新上架
+    List<Goods> findByTime();
 
     //根据男装类型查询该类型的所有商品
     List<Goods> findAllMenByStyleId(Integer manStyleId);

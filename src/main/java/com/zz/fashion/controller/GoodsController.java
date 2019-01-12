@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @Api(value = "商品信息接口文档")
 @RestController
 @CrossOrigin
@@ -30,6 +32,7 @@ public class GoodsController {
         return  goodsService.findMatch();
     }
 
+
     @ApiOperation(notes="展示男装的详细信息，包括价格，颜色，尺寸.......",value = "展示男装的接口")
     @GetMapping("findMenWear.do")
     public ResultVo findMenWear(){
@@ -41,6 +44,26 @@ public class GoodsController {
     public ResultVo findMenWearById(Integer manStyleId){
         return goodsService.findMenWearById(manStyleId);
     }
+
+    @ApiOperation(notes="男装按照销量降序进行查询所有",value = "点击‘销量’获取信息，热销榜单也可以调用")
+    @GetMapping("findMenBySales.do")
+    public ResultVo findMenBySales(){
+        return goodsService.findMenBySales();
+    }
+
+    @ApiOperation(notes = "按照价格升降序、价格区间动态查询男装",value = "price：展示输入的价格以下的商品，传入priceStyle=1代表升序，传入priceStyle=0代表降序，不传参数为查询所有与findMenWear.do接口作用相同")
+    @GetMapping("findMenByPrice.do")
+    public ResultVo findMenByPrice(String price, String priceStyle){
+        return goodsService.findMenByPrice(price, priceStyle);
+    }
+
+    @ApiOperation(notes="男装按照上架时间降序进行查询所有",value = "点击‘最新上架’获取信息")
+    @GetMapping("findMenByTime.do")
+    public ResultVo findMenByTime(){
+        return goodsService.findMenByTime();
+    }
+
+
     @ApiOperation(notes="女装按照销量进行查询",value = "点击销量按钮获取的信息",tags = "女装销量查询")
     @GetMapping("saleVolume.do")
     public ResultVo findSaleVolume(){

@@ -163,6 +163,24 @@ public class GoodsServiceImpl  implements GoodsService {
     }
 
     @Override
+    public ResultVo selectGoodsByChuanDa(String goodsChuandaStyle, String flag) {
+
+        Map<String, Object> map = new HashMap<String, Object>();
+
+        if (goodsChuandaStyle != null && !goodsChuandaStyle.equals("")){
+            map.put("goodsChuandaStyle",Integer.parseInt(goodsChuandaStyle));
+        }
+
+        if (flag != null && !flag.equals("")){
+            map.put("flag", Integer.parseInt(flag));
+        }
+
+        List<Goods> list = goodsMapper.selectGoodsByChuanDa(map);
+
+        return ResultVo.setOK(list);
+    }
+
+    @Override
     public ResultVo selectAllPeiShi() {
         List<Goods> list = goodsMapper.selectAllPeiShi();
 

@@ -134,6 +134,11 @@ public class GoodsController {
         return goodsService.findAll();
     }
 
+    @ApiOperation(notes = "穿搭手册多个界面接口", value = "两个参数goodsChuanStyle穿搭风格id 1-15 必须有一个，flag为风格内小分类id 按照里面位置flag有1、2、3、4 如果不写这个参数则为此系列所有商品")
+    @GetMapping("selectGoodsByChuanDa.do")
+    public ResultVo selectGoodsByChuanDa(String goodsChuandaStyle, String flag) {
 
+        return goodsService.selectGoodsByChuanDa(goodsChuandaStyle,flag);
+    }
 
 }

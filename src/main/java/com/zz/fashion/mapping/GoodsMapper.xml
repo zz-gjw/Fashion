@@ -314,8 +314,22 @@ select  id,goods_name,goods_pic_url from t_goods  where goods_style_id = 2
     WHERE g.goods_style_id=1 and mgs.man_style_id = #{manStyleId }
   </select>
 
-  <!--专男装服饰按照销量降序进行查询-->
-  <select id="findBySales" resultMap="BaseResultMap">
+    <select id="selectGoodsByChuanDa" parameterType="map" resultMap="BaseResultMap">
+     select * from  t_goods g
+     INNER JOIN t_goods_detail gd
+     ON gd.goods_id=g.id
+     <where>
+       <if test="goodsChuandaStyle!=null">
+         and gd.goods_chuanda_style=#{goodsChuandaStyle}
+       </if>
+       <if test="flag">
+         and gd.flag=#{flag}
+       </if>
+     </where>
+    </select>
+
+    <!--专男装服饰按照销量降序进行查询-->
+    <select id="findBySales" resultMap="BaseResultMap">
     SELECT * from t_goods
     WHERE goods_style_id=1 ORDER BY goods_sales desc
   </select>

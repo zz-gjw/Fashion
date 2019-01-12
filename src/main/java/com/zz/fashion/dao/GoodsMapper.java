@@ -60,4 +60,6 @@ public interface GoodsMapper {
     //按照搭配更多的进行查询
     List<Goods> matchMore();
 
+    //搭配手册
+    List<Goods> selectGoodsByChuanDa(Map<String, Object> map);
 }

@@ -98,7 +98,15 @@ public class GoodsServiceImpl  implements GoodsService {
 
     @Override
     public ResultVo findAll() {
-        return null;
+        List<Goods> list = goodsMapper.findAll();
+        if(list.size() >= 1){
+            return   ResultVo.setOK(list);
+        }else {
+
+            return ResultVo.setERROR();
+
+        }
+
     }
 
     //展示所有男装
@@ -178,6 +186,21 @@ public class GoodsServiceImpl  implements GoodsService {
         List<Goods> list = goodsMapper.selectGoodsByChuanDa(map);
 
         return ResultVo.setOK(list);
+    }
+
+    @Override
+    public ResultVo selectByPrimaryKey(Integer id) {
+        if (id == null || id.equals("")){
+            return  ResultVo.setERROR();
+        }
+        Goods goods = goodsMapper.selectByPrimaryKey(id);
+
+        if (goods != null){
+          return  ResultVo.setOK(goods);
+        }
+
+        return ResultVo.setERROR();
+
     }
 
     @Override

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zz.fashion.dao.FocusMapper">
+  <resultMap id="BaseResultMap" type="com.zz.fashion.pojo.Focus">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="t_fashion_focus" jdbcType="INTEGER" property="tFashionFocus" />
+    <result column="t_fasionuser_id" jdbcType="INTEGER" property="tFasionuserId" />
+    <result column="t_userid" jdbcType="INTEGER" property="tUserid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, t_fashion_focus, t_fasionuser_id, t_userid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_focus
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_focus
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zz.fashion.pojo.Focus">
+    insert into t_focus (id, t_fashion_focus, t_fasionuser_id, 
+      t_userid)
+    values (#{id,jdbcType=INTEGER}, #{tFashionFocus,jdbcType=INTEGER}, #{tFasionuserId,jdbcType=INTEGER}, 
+      #{tUserid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zz.fashion.pojo.Focus">
+    insert into t_focus
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="tFashionFocus != null">
+        t_fashion_focus,
+      </if>
+      <if test="tFasionuserId != null">
+        t_fasionuser_id,
+      </if>
+      <if test="tUserid != null">
+        t_userid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tFashionFocus != null">
+        #{tFashionFocus,jdbcType=INTEGER},
+      </if>
+      <if test="tFasionuserId != null">
+        #{tFasionuserId,jdbcType=INTEGER},
+      </if>
+      <if test="tUserid != null">
+        #{tUserid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zz.fashion.pojo.Focus">
+    update t_focus
+    <set>
+      <if test="tFashionFocus != null">
+        t_fashion_focus = #{tFashionFocus,jdbcType=INTEGER},
+      </if>
+      <if test="tFasionuserId != null">
+        t_fasionuser_id = #{tFasionuserId,jdbcType=INTEGER},
+      </if>
+      <if test="tUserid != null">
+        t_userid = #{tUserid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zz.fashion.pojo.Focus">
+    update t_focus
+    set t_fashion_focus = #{tFashionFocus,jdbcType=INTEGER},
+      t_fasionuser_id = #{tFasionuserId,jdbcType=INTEGER},
+      t_userid = #{tUserid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

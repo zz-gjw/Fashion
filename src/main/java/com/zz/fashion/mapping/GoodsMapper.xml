@@ -314,6 +314,11 @@ select  id,goods_name,goods_pic_url from t_goods  where goods_style_id = 2
     WHERE g.goods_style_id=1 and mgs.man_style_id = #{manStyleId }
   </select>
 
+    <select id="findById"  parameterType="int" resultMap="BaseResultMap">
+
+    select <include refid="Base_Column_List" /> from  t_goods
+        where  id = #{id}
+    </select>
     <select id="selectGoodsByChuanDa" parameterType="map" resultMap="BaseResultMap">
      select * from  t_goods g
      INNER JOIN t_goods_detail gd
@@ -352,10 +357,5 @@ select  id,goods_name,goods_pic_url from t_goods  where goods_style_id = 2
   </if>
   </select>
 
-  <!--男装服饰最新上架-->
-  <select id="findByTime" resultMap="BaseResultMap">
-    SELECT * from t_goods
-    where goods_style_id=1 ORDER BY goods_create_date desc
-  </select>
 
 </mapper>

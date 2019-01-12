@@ -46,6 +46,9 @@ public interface GoodsService {
 
     //根据男装类型查询该类型的所有商品
     ResultVo findMenWearById(Integer manStyleId);
+    //根据id获取商品的详细信息
+    ResultVo selectByPrimaryKey(Integer id);
+
 
     ResultVo selectGoodsByChuanDa(String goodsChuandaStyle, String flag);
     //按照销量降序进行查询男装

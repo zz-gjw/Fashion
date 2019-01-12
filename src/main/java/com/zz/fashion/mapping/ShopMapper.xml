@@ -12,6 +12,8 @@
     <result column="flag" jdbcType="INTEGER" property="flag" />
     <result column="shop_info" jdbcType="VARCHAR" property="shopInfo" />
     <result column="shop_youhui" jdbcType="VARCHAR" property="shopYouhui" />
+
+    <collection property="list" resultMap="com.zz.fashion.dao.GoodsMapper.BaseResultMap"></collection>
   </resultMap>
   <sql id="Base_Column_List">
     a_shop_id, shop_name, shop_pic_url, shop_weixing, shop_guanzhu, shop_fengsi, shop_xiaoliang, 
@@ -150,4 +152,15 @@
       shop_youhui = #{shopYouhui,jdbcType=VARCHAR}
     where a_shop_id = #{aShopId,jdbcType=INTEGER}
   </update>
+
+  <select id="findShopById" parameterType="int" resultMap="BaseResultMap">
+   select tg.*, ts.*  from t_goods tg
+    inner join t_shop ts
+    on ts.a_shop_id=tg.goods_shop_id
+     where ts.a_shop_id = #{id}
+  </select>
+
+
+
+
 </mapper>

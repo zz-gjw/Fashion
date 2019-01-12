@@ -10,7 +10,7 @@ public interface GoodsMapper {
     int insert(Goods record);
 
     int insertSelective(Goods record);
-
+    //根据id获取商品的详细信息
     Goods selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(Goods record);
@@ -30,21 +30,14 @@ public interface GoodsMapper {
     List<Goods> findSortByPriceDesc();
     //按照价格进行筛选查询
     List<Goods> filterByPrice(Integer price);
-
     //展示所有男装服饰
     List<Goods> findAllMen();
-    //男装服饰按照销量降序进行查询
-    List<Goods> findBySales();
-    //男装服饰按照价格降序进行动态查询
-    List<Goods> findByPrice(Map<String, Object> map);
-    //男装服饰最新上架
-    List<Goods> findByTime();
-
     //根据男装类型查询该类型的所有商品
     List<Goods> findAllMenByStyleId(Integer manStyleId);
 
     //展示所有服饰
     List<Goods> findAll();
+
     //展示所有佩饰
     List<Goods> selectAllPeiShi();
 
@@ -53,13 +46,24 @@ public interface GoodsMapper {
 
     //按照最新的上架时间进行查询
     List<Goods> clothByNew();
+
     //按照最新的单品进行查询
     List<Goods> colthByNewDan();
+
     //按照最新的套装进行查询
     List<Goods> colthByNewBoth();
     //按照搭配更多的进行查询
     List<Goods> matchMore();
+    //男装服饰按照销量降序进行查询
+    List<Goods> findBySales();
+    //男装服饰按照价格降序进行动态查询
+    List<Goods> findByPrice(Map<String, Object> map);
+    //男装服饰最新上架
+    List<Goods> findByTime();
 
-    //搭配手册
-    List<Goods> selectGoodsByChuanDa(Map<String, Object> map);
+    List<Goods> selectGoodsByChuanDa( Map<String, Object> map);
+
+
+
+
 }

@@ -140,5 +140,12 @@ public class GoodsController {
 
         return goodsService.selectGoodsByChuanDa(goodsChuandaStyle,flag);
     }
+    @ApiOperation(notes="根据id查询对应类型的服装",value = "主要获取指定分类的所有服饰" ,tags = "根据id获取详细信息")
+    @GetMapping("selectByPrimaryKey.do")
+    public ResultVo selectByPrimaryKey(Integer id){
+
+        return goodsService.selectByPrimaryKey(id);
+    }
+
 
 }

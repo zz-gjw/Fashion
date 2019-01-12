@@ -1,5 +1,7 @@
 package com.zz.fashion.pojo;
 
+import java.util.List;
+
 public class Shop {
     private Integer aShopId;
 
@@ -20,6 +22,7 @@ public class Shop {
     private String shopInfo;
 
     private String shopYouhui;
+    private List<Goods> list;
 
     public Integer getaShopId() {
         return aShopId;
@@ -99,5 +102,13 @@ public class Shop {
 
     public void setShopYouhui(String shopYouhui) {
         this.shopYouhui = shopYouhui == null ? null : shopYouhui.trim();
+    }
+
+    public List<Goods> getList() {
+        return list;
+    }
+
+    public void setList(List<Goods> list) {
+        this.list = list;
     }
 }
